@@ -1,0 +1,75 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #main-div{
+            height: 600px;
+            width: 100%;
+            position:relative;
+            background: cyan
+        }
+        #child-div{
+            height:50px;
+            width: 5%;
+            background: rgb(117, 171, 207);
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="main-div">
+        <div id="child-div"></div>
+    </div>
+    <button id="btn">Start</button>
+</body>
+</html>
+
+<script>
+    var animate;
+    var lefts=0;
+    var tops=0;
+    var bottoms=0;
+    var rights=0;
+    var childdiv=document.getElementById("child-div");
+    var btn= document.getElementById("btn");
+    btn.addEventListener("click",function(){
+        animate=setInterval(function(){
+            // if(pos==94) clearInterval(animate)
+            // if(bot==550) clearInterval(animate)
+            // pos++;
+            // childdiv.style.left=pos+"%";
+           
+            // if(pos==94){
+            //     childdiv.style.top=bot+"px";
+            // }
+            // bot++;
+            
+            // console.log(rights);
+                if(lefts==96 && tops<550){
+                    childdiv.style.top=tops+"px";
+                    tops++;
+                    // if(tops==550) clearInterval(animate)
+                }
+                else if(tops==550 && lefts>0){
+                    childdiv.style.left=lefts+"px";
+                    lefts--;
+                    
+                   
+                }  
+                else if(lefts==0 && tops>0){
+                    childdiv.style.top=tops+"px";
+                    tops--;
+                   if(lefts==0 && tops==0) clearInterval(animate);
+
+                }
+                else{
+                    childdiv.style.left=lefts+"%";
+                    lefts++;
+                }
+            // console.log(tops)
+        },5)
+    })
+</script>
